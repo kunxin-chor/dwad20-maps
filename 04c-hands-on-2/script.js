@@ -17,6 +17,21 @@ window.addEventListener("DOMContentLoaded", async function () {
         accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
     }).addTo(map);
 
+    let markerClusterGroup = L.markerClusterGroup();
+    markerClusterGroup.addTo(map);
+
     //////////////////////////////////////////////////////////////////////////
+
+    /// EVENT ////////////////////////////////////////////////////////////////
+
+    /// INPUT ///////////////////////////////////////////////////////////////
+    let response = await axios.get("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson");
+
+    for (let earthquake of response.data.features) {
+        let lat = earthquake.geometry.coordinates[1];
+        let lng = earthquake.geometry.coordinates[0];
+        let marker = L.marker([lat, lng]);
+        marker.addTo(markerClusterGroup);
+    }
 })
 
