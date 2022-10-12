@@ -1,0 +1,6 @@
+#map {
+    /* the map will not display
+    unless the div that the map
+    is has either a weight or height */
+    height: 800px;
+}
