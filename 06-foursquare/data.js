@@ -10,22 +10,21 @@ const headers = {
     "Authorization": API_KEY
 }
 
-async function main() {
-    let ll = "1.3521,103.8198"; // for leaflet, lag lng is an array, for foursquare, it's a string
+async function search(ll, search, radius, category="") {
+   
     let url = API_BASE_URL + "search";
-    console.log(url)
     let response = await axios.get(url,{
         "headers": headers,
         "params":{
             "ll": ll,
-            "query":"chicken rice",
-            "radius":25000,  // 25km
-            "category": 13072,
+            "query":search,
+            "radius":radius, 
+            "category": category,  // ok for category to be empty string
             "limit":50,
             "v": '20210903'  // (Unique FourSquare) YYMMDD format (its for version control). I want to use your version of API dated before this date
         }
     });
-    console.log(response.data);
+
+    return response.data;  // return the search results from the function
 }
 
-main();
