@@ -10,6 +10,8 @@ const headers = {
     "Authorization": API_KEY
 }
 
+// this is a global function
+// therefore other JS files can  make use of it
 async function search(ll, search, radius, category="") {
    
     let url = API_BASE_URL + "search";

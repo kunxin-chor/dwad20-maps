@@ -24,7 +24,15 @@
 
 <body>
 
-    <div id="map"></div>
+    <div id="map-container">
+        <button id="btnToggleSearch">Toggle Search</button>
+        <div id="map"></div>
+        <div id="search-container">
+            <input type="text" id="searchTerms" />
+            <button id="btnSearch">Search</button>
+            <div id="results"></div>
+        </div>
+    </div>
 
     <!-- axios-->
     <script
@@ -38,7 +46,7 @@
     <!-- Leaflet Clustering-->
     <script
         src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
-   
+
     <!-- our own data.js -->
     <script src="data.js"></script>
     <!-- finally script.js -->
