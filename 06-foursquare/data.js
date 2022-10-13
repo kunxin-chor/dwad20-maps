@@ -12,7 +12,9 @@ const headers = {
 
 async function main() {
     let ll = "1.3521,103.8198"; // for leaflet, lag lng is an array, for foursquare, it's a string
-    let response = await axios.get(API_BASE_URL + "search",{
+    let url = API_BASE_URL + "search";
+    console.log(url)
+    let response = await axios.get(url,{
         "headers": headers,
         "params":{
             "ll": ll,
