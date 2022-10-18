@@ -35,11 +35,30 @@ window.addEventListener("DOMContentLoaded", async function () {
 
             for (let r of searchResults.results) {
 
+                console.log(r);
                 // Display the marker
                 let lat = r.geocodes.main.latitude;
                 let lng = r.geocodes.main.longitude;
                 let marker = L.marker([lat,lng]).addTo(searchResultLayer);
-                marker.bindPopup(`<h1>${r.name}</h1>`)
+                // marker.bindPopup(`<h1>${r.name}</h1>`)
+
+                marker.bindPopup( function(){
+                 
+                    let el = document.createElement('div');
+                    // add the 'popup' class to the <div>
+                    // see style.css for its definition
+                    el.classList.add("popup")
+                    el.innerHTML = `<h1>${r.name}</h1>`
+                    async function getPicture() {
+                        let photos = await getPhoto(r.fsq_id);
+                        let firstPhoto = photos[0];
+                        let url = firstPhoto.prefix + "original" + firstPhoto.suffix;
+                        el.innerHTML += `<img src="${url}"/>`
+                    }
+
+                    getPicture();
+                    return el;
+                })
 
                 // add to the search results
                 let resultElement = document.createElement("div");

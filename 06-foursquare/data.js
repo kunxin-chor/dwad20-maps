@@ -30,3 +30,10 @@ async function search(ll, search, radius, category="") {
     return response.data;  // return the search results from the function
 }
 
+async function getPhoto(fsq_id) {
+    let response = await axios.get(API_BASE_URL + `${fsq_id}/photos`,{
+        'headers': headers
+    });
+    return response.data;
+}
+

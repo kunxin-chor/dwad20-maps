@@ -38,6 +38,12 @@
     z-index: 300000;
 }
 
+.popup{
+    overflow: scroll;
+    width:300px;
+    height:300px;
+}
+
 @media (min-width: 767px) {
     /* because the div is a block-level element, so we use display: block */
     #search-container {
@@ -49,3 +55,4 @@
         display: none;
     }
 }
+
