@@ -40,8 +40,10 @@ window.addEventListener("DOMContentLoaded", async function () {
                 let lat = r.geocodes.main.latitude;
                 let lng = r.geocodes.main.longitude;
                 let marker = L.marker([lat,lng]).addTo(searchResultLayer);
-                // marker.bindPopup(`<h1>${r.name}</h1>`)
+            
 
+
+                // the function for the popup cannot be an async function
                 marker.bindPopup( function(){
                  
                     let el = document.createElement('div');
@@ -56,7 +58,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                         el.innerHTML += `<img src="${url}"/>`
                     }
 
-                    getPicture();
+                     getPicture();
                     return el;
                 })
 
